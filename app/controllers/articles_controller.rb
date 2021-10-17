@@ -17,34 +17,38 @@ class ArticlesController < ApplicationController
 
     if @article.save
       redirect_to @article
-      flash[:notice] = "Article was successfully created!"
+      flash[:notice] = 'Article was successfully created!'
     else
       render :new
-      flash[:alert] = "Error"
+      flash[:alert] = 'Error'
     end
   end
+
   def edit
-    @article=Article.find(params[:id])
+    @article = Article.find(params[:id])
   end
+
   def update
-    @article=Article.find(params[:id])
+    @article = Article.find(params[:id])
     if @article.update(article_params)
       redirect_to @article
-      flash[:notice] = "Article was successfully updated!"
+      flash[:notice] = 'Article was successfully updated!'
     else
       render :edit
-      flash[:alert] = "Error!!!"
+      flash[:alert] = 'Error!!!'
     end
   end
+
   def destroy
-    @article=Article.find(params[:id])
+    @article = Article.find(params[:id])
     @article.destroy
 
     redirect_to root_path
-    flash[:notice] = "Successfully deleted"
+    flash[:notice] = 'Successfully deleted'
   end
 
   private
+
   def article_params
     params.require(:article).permit(:title, :body)
   end
