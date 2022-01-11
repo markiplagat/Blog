@@ -5,5 +5,4 @@ RSpec.describe Article, type: :model do
     article = Article.create
     expect(article)
   end
-
 end
